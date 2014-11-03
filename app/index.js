@@ -87,7 +87,7 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       }, {
         type: "list",
         name: "stylesheet",
-        default: 1,
+        default: 0,
         message: "What would you like to write stylesheets with?",
         choices: [ "CSS", "Sass", "Stylus", "Less"],
         filter: function( val ) { return val.toLowerCase(); }
@@ -223,9 +223,9 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
     this.composeWith('ng-component', {
       options: {
         'routeDirectory': appPath,
-        'directiveDirectory': appPath,
-        'filterDirectory': appPath,
-        'serviceDirectory': appPath,
+        'directiveDirectory': appPath + 'directives/',
+        'filterDirectory': appPath + 'filters/',
+        'serviceDirectory': appPath + 'services/',
         'filters': filters,
         'extensions': extensions,
         'basePath': 'client'
