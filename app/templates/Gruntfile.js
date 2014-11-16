@@ -60,13 +60,13 @@ module.exports = function (grunt) {
           '!<%%= yeoman.client %>/{app,components}/**/*.spec.js',
           '!<%%= yeoman.client %>/{app,components}/**/*.mock.js',
           '!<%%= yeoman.client %>/app/app.js'],
-        tasks: ['injector:scripts']
+        tasks: ['newer:jshint:all', 'injector:scripts']
       },
       injectCss: {
         files: [
           '<%%= yeoman.client %>/{app,components}/**/*.css'
         ],
-        tasks: ['injector:css']
+        tasks: ['newer:csslint:all', 'injector:css']
       },
       mochaTest: {
         files: ['server/**/*.spec.js'],
@@ -187,6 +187,16 @@ module.exports = function (grunt) {
           '<%%= yeoman.client %>/{app,components}/**/*.spec.js',
           '<%%= yeoman.client %>/{app,components}/**/*.mock.js'
         ]
+      }
+    },
+  
+    // Make sure code styles are up to par and there are no obvious mistakes
+    csslint: {
+      options: {
+        csslintrc: '<%%= yeoman.client %>/.csslintrc',
+      },
+      all: {
+        src: ['<%%= yeoman.client %>/{app,components}/**/*.css']
       }
     },
 
@@ -832,6 +842,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
+    'newer:csslint',
     'test',
     'build'
   ]);
