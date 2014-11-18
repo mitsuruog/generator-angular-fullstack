@@ -244,7 +244,8 @@ var AngularFullstackGenerator = yeoman.generators.Base.extend({
       "'ngResource'",
       "'ngSanitize'",
       "'ngAnimate'",
-      "'config.ENV'"
+      "'config.ENV'",
+      "'angular-loading-bar'"
     ];
     if(this.filters.ngroute) angModules.push("'ngRoute'");
     if(this.filters.socketio) angModules.push("'btford.socket-io'");
