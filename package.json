@@ -1,5 +1,5 @@
 {
-  "name": "generator-angular-fullstack-mitsuruog",
+  "name": "generator-angular-mitsuruog",
   "version": "0.0.0",
   "description": "Yeoman generator for creating MEAN stack applications, using MongoDB, Express, AngularJS, and Node",
   "keywords": [
@@ -15,12 +15,12 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/mitsuruog/generator-angular-fullstack-mitsuruog",
-  "bugs": "https://github.com/mitsuruog/generator-angular-fullstack-mitsuruog/issues",
+  "homepage": "https://github.com/mitsuruog/generator-angular-mitsuruog",
+  "bugs": "https://github.com/mitsuruog/generator-angular-mitsuruog/issues",
   "author": "mitsuruog",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mitsuruog/generator-angular-fullstack-mitsuruog.git"
+    "url": "git://github.com/mitsuruog/generator-angular-mitsuruog.git"
   },
   "scripts": {
     "test": "grunt test"
