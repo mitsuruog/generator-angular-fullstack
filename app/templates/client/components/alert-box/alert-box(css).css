@@ -1,0 +1,42 @@
+.alert-container {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+  margin: 3px;
+  opacity: 0.9;
+}
+
+.alert-container .alert {
+  margin-bottom: 3px;  
+}
+
+.alert-container .alert.ng-enter,
+.alert-container .alert.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+
+.alert-container .alert.ng-enter {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.alert-container .alert.ng-enter.ng-enter-active {
+  opacity: 1;
+  height: 100%;
+}
+
+.alert-container .alert.ng-leave {
+  opacity: 1;
+  overflow: hidden;
+}
+
+.alert-container .alert.ng-leave.ng-leave-active {
+  opacity: 0;
+  height: 0;
+}
