@@ -4,7 +4,7 @@
   angular.module('<%= scriptAppName %>')
     .directive('debug', Debug);
 
-  function Debug() {
+  function Debug(ENV) {
 
     var directive = {
       templateUrl: 'components/debug/debug.html',
@@ -18,7 +18,9 @@
 
     ////////////
 
-    function link(scope, element, attrs) {}
+    function link(scope, element, attrs) {
+      scope.debug = ENV.debug;
+    }
 
   }
 
