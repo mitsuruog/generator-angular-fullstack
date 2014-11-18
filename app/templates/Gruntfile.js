@@ -56,7 +56,7 @@ module.exports = function (grunt) {
     watch: {
       injectJS: {
         files: [
-          '<%%= yeoman.client %>/{app,components}/**/*.js',
+          '<%%= yeoman.client %>/{app,config,components}/**/*.js',
           '!<%%= yeoman.client %>/{app,components}/**/*.spec.js',
           '!<%%= yeoman.client %>/{app,components}/**/*.mock.js',
           '!<%%= yeoman.client %>/app/app.js'],
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
         files: [
           '{.tmp,<%%= yeoman.client %>}/{app,components}/**/*.css',
           '{.tmp,<%%= yeoman.client %>}/{app,components}/**/*.html',
-          '{.tmp,<%%= yeoman.client %>}/{app,components}/**/*.js',
+          '{.tmp,<%%= yeoman.client %>}/{app,config,components}/**/*.js',
           '!{.tmp,<%%= yeoman.client %>}{app,components}/**/*.spec.js',
           '!{.tmp,<%%= yeoman.client %>}/{app,components}/**/*.mock.js',
           '<%%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -178,7 +178,7 @@ module.exports = function (grunt) {
         src: ['server/**/*.spec.js']
       },
       all: [
-        '<%%= yeoman.client %>/{app,components}/**/*.js',
+        '<%%= yeoman.client %>/{app,config,components}/**/*.js',
         '!<%%= yeoman.client %>/{app,components}/**/*.spec.js',
         '!<%%= yeoman.client %>/{app,components}/**/*.mock.js'
       ],
@@ -711,7 +711,41 @@ module.exports = function (grunt) {
             '<%%= yeoman.client %>/{app,components}/**/*.css'
           ]
         }
+      },
+
+      // [MEMO] override with following setting when running the `inject` task
+      configProd: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/client/', '');
+            return '<script src="' + filePath + '"></script>';
+          },
+          starttag: '<!-- injector:config -->',
+          endtag: '<!-- endinjector -->'
+        },
+        files: {
+          '<%%= yeoman.client %>/index.html': [
+            '<%%= yeoman.client %>/config/environment/production.js'
+          ]
+        }
+      },
+
+      configDev: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/client/', '');
+            return '<script src="' + filePath + '"></script>';
+          },
+          starttag: '<!-- injector:config -->',
+          endtag: '<!-- endinjector -->'
+        },
+        files: {
+          '<%%= yeoman.client %>/index.html': [
+            '<%%= yeoman.client %>/config/environment/development.js'
+          ]
+        }
       }
+
     },
   });
 
