@@ -13,7 +13,7 @@
       alerts: alerts,
       error: error,
       warning: warning,
-      addSuccess: addSuccess,
+      success: success,
       info: info,
       remove: remove
     };
