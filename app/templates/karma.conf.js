@@ -22,6 +22,8 @@ module.exports = function(config) {
       'client/bower_components/lodash/dist/lodash.compat.js',<% if(filters.socketio) { %>
       'client/bower_components/angular-socket-io/socket.js',<% } %><% if(filters.uirouter) { %>
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',<% } %>
+      'client/bower_components/angular-animate/angular-animate.js',
+      'client/bower_components/angular-loading-bar/build/loading-bar.js',
       'client/app/app.js',
       'client/app/app.coffee',
       'client/app/**/*.js',
@@ -31,7 +33,8 @@ module.exports = function(config) {
       'client/app/**/*.jade',
       'client/components/**/*.jade',
       'client/app/**/*.html',
-      'client/components/**/*.html'
+      'client/components/**/*.html',
+      'client/config/environment/test.js'
     ],
 
     preprocessors: {
