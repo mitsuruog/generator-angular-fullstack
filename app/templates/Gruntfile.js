@@ -501,14 +501,14 @@ module.exports = function (grunt) {
     },
 
     protractor: {
-      options: {
-        configFile: 'protractor.conf.js'
-      },
-      chrome: {
+      functional:{
         options: {
-          args: {
-            browser: 'chrome'
-          }
+          configFile: 'e2e/config/protractor.functional.conf.js'
+        }
+      },
+      acceptance:{
+        options: {
+          configFile: 'e2e/config/protractor.acceptance.conf.js'
         }
       }
     },
@@ -843,7 +843,24 @@ module.exports = function (grunt) {
         'wiredep',
         'autoprefixer',
         'express:dev',
-        'protractor'
+        'protractor:functional'
+      ]);
+    }
+
+    else if (target === 'accept') {
+      return grunt.task.run([
+        'clean:server',
+        'env:all',
+        'env:test',<% if(filters.stylus) { %>
+        'injector:stylus', <% } %><% if(filters.less) { %>
+        'injector:less', <% } %><% if(filters.sass) { %>
+        'injector:sass', <% } %>
+        'concurrent:test',
+        'injector',
+        'wiredep',
+        'autoprefixer',
+        'express:dev',
+        'protractor:acceptance'
       ]);
     }
 
