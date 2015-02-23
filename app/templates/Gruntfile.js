@@ -189,7 +189,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-  
+
     // Make sure code styles are up to par and there are no obvious mistakes
     csslint: {
       options: {
@@ -400,7 +400,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'bower_components/**/*',
+            'bower_components/**/fonts/*.{eot,svg,ttf,woff}',
             'assets/images/{,*/}*.{webp}',
             'assets/fonts/**/*',
             'index.html'
