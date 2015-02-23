@@ -41,6 +41,7 @@ module.exports = function(config) {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
       '**/*.coffee': 'coffee',
+      'client/{app,components}/**/!(*spec|*mock).js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {
@@ -49,6 +50,14 @@ module.exports = function(config) {
 
     ngJade2JsPreprocessor: {
       stripPrefix: 'client/'
+    },
+
+    reporters: ['progress', 'coverage'],
+
+    // optionally, configure the reporter
+    coverageReporter: {
+      type : 'html',
+      dir : 'report/coverage/'
     },
 
     // list of files / patterns to exclude
